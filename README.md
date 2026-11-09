@@ -31,7 +31,7 @@ CurScript already comes with a test file inside the "projects" folder
 
 #### Option 2: Create your own .curscript files
 
-* Type "learn" and text will show up detailing how to write curscript.
+* Type "learn" and text will show up detailing how to write curscript (Alternatively, you can check out TUTORIAL.md for a more in-depth explanation
 * Create a new text file and write these commands each on different lines, and with correct capitalization.
 * Rename the file extension to ".curscript" (This is an optional step, but is recommended for proper file organisation)
 
