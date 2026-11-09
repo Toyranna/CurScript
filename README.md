@@ -18,7 +18,7 @@ Once inside the program, you have 2 options.
 
 
 
-##### Option 1: Run .curscript files
+#### Option 1: Run .curscript files
 
 If you already have a .curscript file you want to use or need to test out if the program works,
 
@@ -29,7 +29,7 @@ CurScript already comes with a test file inside the "projects" folder
 
 
 
-##### Option 2: Create your own .curscript files
+#### Option 2: Create your own .curscript files
 
 * Type "learn" and text will show up detailing how to write curscript.
 * Create a new text file and write these commands each on different lines, and with correct capitalization.
