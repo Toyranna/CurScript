@@ -1,10 +1,12 @@
-L10
+MThis is a test message
+T0.1
+L100
 W0.2
-R10
+R100
 W0.2
-U10
+U100
 W0.2
-D10
+D100
 W0.2
-X0
-Y0
+X200
+CM
