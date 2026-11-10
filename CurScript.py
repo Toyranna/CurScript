@@ -150,7 +150,6 @@ def terminal():
         terminal()
 
 print("CurScript 1.0.0")
-print("Created by Toyranna")
 print("")
 print("input 'help' for instructions on how to use this app")
 print("input 'learn' for instructions on how to write CurScript")
