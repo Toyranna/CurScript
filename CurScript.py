@@ -7,8 +7,10 @@ multiplier = 1
 print_actions = 0
 
 def interpreter():
-    filetorun = Path(__file__).resolve().parent / "Projects" / input("file to run: ").strip()
-    print(filetorun)
+    global dur
+    filetorun = Path(__file__).resolve().parent / "Projects" / (input("file to run: ") + ".curscript").strip()
+    if print_actions == "1":
+        print(filetorun)
     try:
         with open(filetorun) as file:
             instructions = [line.strip() for line in file]
@@ -30,29 +32,29 @@ def interpreter():
                     print("Move to X " + str(int(data)))
                 x = mouse.get_position()[0]
                 y = mouse.get_position()[1]
-                mouse.drag(x, y, (int(data)), y, absolute=True, duration=dur)
+                mouse.move((int(data)), y, absolute=True, duration=dur)
             elif controller == "Y":
                 if print_actions == "1":
                     print("Move to Y " + str(int(data)))
                 x = mouse.get_position()[0]
                 y = mouse.get_position()[1]
-                mouse.drag(x, y, x, (int(data)), absolute=True, duration=dur)
+                mouse.move(x, (int(data)), absolute=True, duration=dur)
             elif controller == "L":
                 if print_actions == "1":
                     print("Left by " + str(int(data) * multiplier))
-                mouse.drag(0, 0, (int(data) * (multiplier * -1)), 0, absolute=False, duration=dur)
+                mouse.move((float(data)) * (multiplier * -1), 0, absolute=False, duration=dur)
             elif controller == "R":
                 if print_actions == "1":
                     print("Right by " + str(int(data) * multiplier))
-                mouse.drag(0, 0, (int(data) * (multiplier * 1)), 0, absolute=False, duration=dur)
+                mouse.move((float(data)) * (multiplier * 1), 0, absolute=False, duration=dur)
             elif controller == "U":
                 if print_actions == "1":
                     print("Up by " + str(int(data) * multiplier))
-                mouse.drag(0, 0, 0, (int(data) * (multiplier * 1)), absolute=False, duration=dur)
+                mouse.move(0, (float(data)) * (multiplier * -1), absolute=False, duration=dur)
             elif controller == "D":
                 if print_actions == "1":
                     print("Down by " + str(int(data) * multiplier))
-                mouse.drag(0, 0, 0, (int(data) * (multiplier * -1)), absolute=False, duration=dur)
+                mouse.move(0, (float(data)) * (multiplier * 1), absolute=False, duration=dur)
             elif controller == "W":
                 if print_actions == "1":
                     print("Wait for " + str(float(data)))
@@ -79,18 +81,21 @@ def interpreter():
             else:
                 if print_actions == "1":
                     print("unknown command")
+    dur = 0
     terminal()
 
 def configmenu():
+    global print_actions
+    global multiplier
     print("")
     print("1. pixel multiplier")
     print("2. print actions?")
     print("")
     settingchange = input("select a setting to change - ")
     if settingchange == "1":
-        multiplier = input("configure pixel multiplier: ")
+        multiplier = float(input("configure pixel multiplier: "))
     elif settingchange == "2":
-        print_actions = input("print actions [0/1]: ")
+        print_actions = input("configure print actions? [0/1]: ")
     else:
         print("setting not recognised. Please input a valid number")
     print("")
