@@ -18,6 +18,7 @@ def interpreter():
         print("file could not be found in projects folder")
         print("")
     else:
+        print("")
         if print_actions == "1":
             print(instructions)
         for cmd in instructions:
@@ -84,6 +85,15 @@ def interpreter():
     dur = 0
     terminal()
 
+def findmymouse():
+    print("")
+    print("right click to print your current mouse position")
+    while not mouse.is_pressed("right"):
+        time.sleep(0.1)
+    print(mouse.get_position())
+    print("")
+    terminal()
+
 def configmenu():
     global print_actions
     global multiplier
@@ -105,8 +115,9 @@ def helpmenu():
     print("exit - exit CurScript")
     print("help - show the help menu")
     print("learn - a brief explanation on how to write CurScript")
-    print("run [filename] - runs a CurScript file")
+    print("run - runs a CurScript file")
     print("config - open the settings menu")
+    print("find - lets you find the position of your mouse")
     print("")
     
 def learnmenu():
@@ -143,13 +154,15 @@ def terminal():
         terminal()
     elif command == "run":
         interpreter()
+    elif command == "find":
+        findmymouse()
     else:
         print("")
         print("command not recognised - input 'help' for a list of commands")
         print("")
         terminal()
 
-print("CurScript 1.0.0")
+print("CurScript 1.0.1")
 print("")
 print("input 'help' for instructions on how to use this app")
 print("input 'learn' for instructions on how to write CurScript")
