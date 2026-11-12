@@ -1,7 +1,7 @@
 import mouse
 import time
 from pathlib import Path
-
+from colorama import Fore, Back, Style
 dur = 0
 multiplier = 1
 print_actions = 0
@@ -15,10 +15,11 @@ def interpreter():
         with open(filetorun) as file:
             instructions = [line.strip() for line in file]
     except:
-        print("file could not be found in projects folder")
-        print("")
+        print(Fore.RED + "error: file could not be found in projects folder")
+        print(Fore.RESET + "")
     else:
         print("")
+        unknowns = 0
         if print_actions == "1":
             print(instructions)
         for cmd in instructions:
@@ -81,7 +82,10 @@ def interpreter():
                         print("middle click")
             else:
                 if print_actions == "1":
-                    print("unknown command")
+                    print(Fore.RED + "unknown command" + Fore.RESET)
+                    unknowns += 1
+    if print_actions == "1" and unknowns > 0:
+        print(Fore.RED + str(unknowns) + Fore.RESET + " unknown commands were found in the script")
     dur = 0
     terminal()
 
@@ -90,7 +94,7 @@ def findmymouse():
     print("right click to print your current mouse position")
     while not mouse.is_pressed("right"):
         time.sleep(0.1)
-    print(mouse.get_position())
+    print(Fore.GREEN + str(mouse.get_position()) + Fore.RESET)
     print("")
     terminal()
 
@@ -107,7 +111,7 @@ def configmenu():
     elif settingchange == "2":
         print_actions = input("configure print actions? [0/1]: ")
     else:
-        print("setting not recognised. Please input a valid number")
+        print(Fore.RED + "setting not recognised. Please input a valid number" + Fore.RESET)
     print("")
 
 def helpmenu():
@@ -133,9 +137,12 @@ def learnmenu():
     print("T[sec] - Set the duration of every mouse movement (0 by default)")
     print("X[num] - Go to [num] on the X axis")
     print("Y[num] - Go to [num on the Y axis")
+    print("CL - Left click")
+    print("CR - Right click")
+    print("CM - Middle click")
     print("M[message] - Send a message to the user")
     print("")
-    print("If you want to see these commands in action, run default.curscript")
+    print("If you want to see these commands in action, run the demo file")
     print("")
     
 def terminal():
@@ -158,11 +165,11 @@ def terminal():
         findmymouse()
     else:
         print("")
-        print("command not recognised - input 'help' for a list of commands")
+        print(Fore.RED + "command not recognised - input 'help' for a list of commands" + Fore.RESET)
         print("")
         terminal()
 
-print("CurScript 1.0.1")
+print("CurScript 1.0.2")
 print("")
 print("input 'help' for instructions on how to use this app")
 print("input 'learn' for instructions on how to write CurScript")
