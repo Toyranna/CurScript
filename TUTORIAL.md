@@ -38,7 +38,14 @@ CL
 CR
 CM
 ```
-
+### Scrolling
+You can scroll up and down using "S" followed by the number of lines you want to scroll (positive is up; negative is down)
+for example, scrolling up by 20 lines, waiting, and then scrolling down by 30 lines
+```
+S20
+W0.5
+S-30
+```
 ### Making movement fluid
 To make the mouse smoothly glide instead of teleporting, you can use "T" followed by the glide time.
 For example, I want the mouse to slowly glide to the left over 5 seconds:

@@ -41,6 +41,10 @@ def interpreter():
                 x = mouse.get_position()[0]
                 y = mouse.get_position()[1]
                 mouse.move(x, (int(data)), absolute=True, duration=dur)
+            elif controller == "S":
+                if print_actions == "1":
+                    print("Scroll by " + str(int(data)))
+                mouse.wheel(delta=int(data))
             elif controller == "L":
                 if print_actions == "1":
                     print("Left by " + str(int(data) * multiplier))
@@ -137,6 +141,7 @@ def learnmenu():
     print("T[sec] - Set the duration of every mouse movement (0 by default)")
     print("X[num] - Go to [num] on the X axis")
     print("Y[num] - Go to [num on the Y axis")
+    print("S[num] - Scroll [num] lines on the vertical axis")
     print("CL - Left click")
     print("CR - Right click")
     print("CM - Middle click")
@@ -169,7 +174,7 @@ def terminal():
         print("")
         terminal()
 
-print("CurScript 1.0.2")
+print("CurScript 1.0.3")
 print("")
 print("input 'help' for instructions on how to use this app")
 print("input 'learn' for instructions on how to write CurScript")
